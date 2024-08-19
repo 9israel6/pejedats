@@ -201,4 +201,5 @@ def main():
         else:
             print("Opción no válida, intente de nuevo.")
 
-if __
+if __name__ == "__main__":
+    main()
