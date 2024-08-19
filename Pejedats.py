@@ -7,11 +7,13 @@ import fitz  # PyMuPDF para manejar archivos PDF
 import docx
 import openpyxl
 
-def mostrar_texto_intro():
-    verde_limon = "\033[92m"  # Verde limón (claro)
-    purpura = "\033[95m"  # Púrpura
-    reset_color = "\033[0m"  # Reset a color por defecto
+# Colores para el texto
+verde_limon = "\033[92m"
+purpura = "\033[95m"
+amarillo = "\033[93m"
+reset_color = "\033[0m"
 
+def mostrar_texto_intro():
     texto_intro = f"""
 {verde_limon}
                      __             .___          __           
@@ -21,7 +23,6 @@ ______    ____      |__|  ____    __| _/_____   _/  |_   ______
 |   __/  \___  >/\__|  | \___  >\____ | (____  / |__|  /____  >
 |__|         \/ \______|     \/      \/      \/             \/ 
 {reset_color}
-
 {purpura}Esta herramienta fue creada con fines educativos, cualquier mal uso de la misma es bajo tu responsabilidad - 9israel6{reset_color}
     """
     print(texto_intro)
@@ -68,7 +69,7 @@ def eliminar_metadatos_documento(documento):
 
 def eliminar_metadatos():
     while True:
-        print("\nSubmenú: Elimine sus metadatos aquí")
+        print(f"\n{amarillo}Submenú: Elimine sus metadatos aquí{reset_color}")
         print("1. Eliminar metadatos de imagen")
         print("2. Eliminar metadatos de PDF")
         print("3. Eliminar metadatos de documentos (Word, Excel)")
@@ -99,7 +100,7 @@ def eliminar_metadatos():
 
 def ingresar_archivos():
     while True:
-        print("\nSubmenú: Ingresar archivos")
+        print(f"\n{amarillo}Submenú: Ingresar archivos{reset_color}")
         archivo = input("Ingrese el nombre del archivo para analizar o 'volver' para regresar al menú principal: ")
         if archivo.lower() == 'volver':
             break
@@ -123,7 +124,7 @@ def ingresar_archivos():
 
 def ingresar_foto():
     while True:
-        print("\nSubmenú: Ingresar foto")
+        print(f"\n{amarillo}Submenú: Ingresar foto{reset_color}")
         foto = input("Ingrese el nombre del archivo de imagen (BMP, GIF, JPG, TIF, PNG) o 'volver' para regresar al menú principal: ")
         if foto.lower() == 'volver':
             break
@@ -161,15 +162,16 @@ def ingresar_foto():
             print(f"Error: El archivo {foto} no existe.")
 
 def mostrar_menu():
-    print("\nMenú Pejedats")
+    print(f"\n{amarillo}Menú Pejedats{reset_color}")
     print("1. Archivos")
     print("2. Fotos")
     print("3. Eliminar metadatos")
-    print("4. Salir")
-    return input("Seleccione una opción (1-4): ")
+    print("4. Contacto")
+    print("5. Salir")
+    return input("Seleccione una opción (1-5): ")
 
 def mostrar_contacto():
-    print("\nContacto")
+    print(f"\n{amarillo}Contacto{reset_color}")
     print("Facebook: https://www.facebook.com/9isra6")
     print("Instagram: https://www.instagram.com/9israel6/")
 
@@ -185,6 +187,7 @@ def main():
             eliminar_metadatos()
         elif opcion == '4':
             mostrar_contacto()
+        elif opcion == '5':
             print("Saliendo del programa...")
             break
         else:
