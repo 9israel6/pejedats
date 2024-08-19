@@ -10,6 +10,7 @@ import openpyxl
 # Colores para el texto
 verde_limon = "\033[92m"
 purpura = "\033[95m"
+azul = "\033[94m"
 amarillo = "\033[93m"
 reset_color = "\033[0m"
 
@@ -24,6 +25,7 @@ ______    ____      |__|  ____    __| _/_____   _/  |_   ______
 |__|         \/ \______|     \/      \/      \/             \/ 
 {reset_color}
 {purpura}Esta herramienta fue creada con fines educativos, cualquier mal uso de la misma es bajo tu responsabilidad - 9israel6{reset_color}
+{azul}https://www.facebook.com/9isra6{reset_color}
     """
     print(texto_intro)
 
@@ -70,25 +72,31 @@ def eliminar_metadatos_documento(documento):
 def eliminar_metadatos():
     while True:
         print(f"\n{amarillo}Submenú: Elimine sus metadatos aquí{reset_color}")
-        print("1. Eliminar metadatos de imagen")
-        print("2. Eliminar metadatos de PDF")
-        print("3. Eliminar metadatos de documentos (Word, Excel)")
-        print("4. Volver al menú principal")
+        print(f"{amarillo}1. Eliminar metadatos de imagen{reset_color}")
+        print(f"{amarillo}2. Eliminar metadatos de PDF{reset_color}")
+        print(f"{amarillo}3. Eliminar metadatos de documentos (Word, Excel){reset_color}")
+        print(f"{amarillo}4. Volver al menú principal{reset_color}")
         opcion = input("Seleccione una opción (1-4): ")
         if opcion == '1':
-            imagen = input("Ingrese el nombre del archivo de imagen (BMP, GIF, JPG, TIF, PNG): ")
+            imagen = input("Ingrese el nombre del archivo de imagen (BMP, GIF, JPG, TIF, PNG) o 'volver' para regresar al menú principal: ")
+            if imagen.lower() == 'volver':
+                break
             if os.path.isfile(imagen):
                 eliminar_metadatos_imagen(imagen)
             else:
                 print(f"Error: El archivo {imagen} no existe.")
         elif opcion == '2':
-            pdf = input("Ingrese el nombre del archivo PDF: ")
+            pdf = input("Ingrese el nombre del archivo PDF o 'volver' para regresar al menú principal: ")
+            if pdf.lower() == 'volver':
+                break
             if os.path.isfile(pdf):
                 eliminar_metadatos_pdf(pdf)
             else:
                 print(f"Error: El archivo {pdf} no existe.")
         elif opcion == '3':
-            documento = input("Ingrese el nombre del archivo de documento (Word, Excel): ")
+            documento = input("Ingrese el nombre del archivo de documento (Word, Excel) o 'volver' para regresar al menú principal: ")
+            if documento.lower() == 'volver':
+                break
             if os.path.isfile(documento):
                 eliminar_metadatos_documento(documento)
             else:
@@ -163,17 +171,11 @@ def ingresar_foto():
 
 def mostrar_menu():
     print(f"\n{amarillo}Menú Pejedats{reset_color}")
-    print("1. Archivos")
-    print("2. Fotos")
-    print("3. Eliminar metadatos")
-    print("4. Contacto")
-    print("5. Salir")
-    return input("Seleccione una opción (1-5): ")
-
-def mostrar_contacto():
-    print(f"\n{amarillo}Contacto{reset_color}")
-    print("Facebook: https://www.facebook.com/9isra6")
-    print("Instagram: https://www.instagram.com/9israel6/")
+    print(f"{amarillo}1. Archivos{reset_color}")
+    print(f"{amarillo}2. Fotos{reset_color}")
+    print(f"{amarillo}3. Eliminar metadatos{reset_color}")
+    print(f"{amarillo}4. Salir{reset_color}")
+    return input("Seleccione una opción (1-4): ")
 
 def main():
     mostrar_texto_intro()
@@ -186,12 +188,4 @@ def main():
         elif opcion == '3':
             eliminar_metadatos()
         elif opcion == '4':
-            mostrar_contacto()
-        elif opcion == '5':
-            print("Saliendo del programa...")
-            break
-        else:
-            print("Opción no válida, intente de nuevo.")
-
-if __name__ == "__main__":
-    main()
+            print("Sali
