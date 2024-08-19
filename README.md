@@ -7,6 +7,9 @@ sudo apt install python3-tk
 sudo apt install libxml2-dev libxslt-dev zlib1g-dev
 pip3 install pillow pymupdf python-docx openpyxl
 
+#Instala el repositorio
 git clone https://github.com/9israel6/pejedats.git
+#Abrimos la carpeta
 cd pejedats
+#Ejecutamos Pejedats
 python3 Pekedats.py
