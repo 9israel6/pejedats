@@ -8,13 +8,23 @@ import docx
 import openpyxl
 
 def mostrar_texto_intro():
-    texto_intro = """
+    # Códigos de escape ANSI para los colores
+    verde_limon = "\033[92m"  # Verde limón (claro)
+    purpura = "\033[95m"  # Púrpura
+    reset_color = "\033[0m"  # Reset a color por defecto
+
+    # Título con color verde limón
+    texto_intro = f"""
+{verde_limon}
                      __             .___          __           
 ______    ____      |__|  ____    __| _/_____   _/  |_   ______
 \____ \ _/ __ \     |  |_/ __ \  / __ | \__  \  \   __\ /  ___/
 |  |_> >\  ___/     |  |\  ___/ / /_/ |  / __ \_ |  |   \___ \ 
 |   __/  \___  >/\__|  | \___  >\____ | (____  / |__|  /____  >
 |__|         \/ \______|     \/      \/      \/             \/ 
+{reset_color}
+
+{purpura}Esta herramienta fue creada con fines educativos, cualquier mal uso de la misma es bajo tu responsabilidad - 9israel6{reset_color}
     """
     print(texto_intro)
 
@@ -60,12 +70,15 @@ def eliminar_metadatos_documento(documento):
         print(f"Error al procesar el documento: {e}")
 
 def eliminar_metadatos():
-    print("Submenú: Elimine sus metadatos aquí")
+    amarillo = "\033[93m"  # Amarillo
+    reset_color = "\033[0m"  # Reset a color por defecto
+
+    print(f"{amarillo}Submenú: Elimine sus metadatos aquí{reset_color}")
     while True:
-        print("1. Eliminar metadatos de imagen")
+        print(f"{amarillo}1. Eliminar metadatos de imagen")
         print("2. Eliminar metadatos de PDF")
         print("3. Eliminar metadatos de documentos (Word, Excel)")
-        print("4. Volver al menú principal")
+        print("4. Volver al menú principal{reset_color}")
         opcion = input("Seleccione una opción (1-4): ")
         if opcion == '1':
             imagen = input("Ingrese el nombre del archivo de imagen (BMP, GIF, JPG, TIF, PNG): ")
@@ -91,7 +104,10 @@ def eliminar_metadatos():
             print("Opción no válida, intente de nuevo.")
 
 def ingresar_archivos():
-    print("Submenú: Ingresar archivos")
+    amarillo = "\033[93m"  # Amarillo
+    reset_color = "\033[0m"  # Reset a color por defecto
+
+    print(f"{amarillo}Submenú: Ingresar archivos{reset_color}")
     archivo = input("Ingrese el nombre del archivo para analizar: ")
     if os.path.isfile(archivo):
         try:
@@ -112,7 +128,10 @@ def ingresar_archivos():
         print(f"Error: El archivo {archivo} no existe.")
 
 def ingresar_foto():
-    print("Submenú: Ingresar foto")
+    amarillo = "\033[93m"  # Amarillo
+    reset_color = "\033[0m"  # Reset a color por defecto
+
+    print(f"{amarillo}Submenú: Ingresar foto{reset_color}")
     foto = input("Ingrese el nombre del archivo de imagen (BMP, GIF, JPG, TIF, PNG): ")
     if os.path.isfile(foto):
         try:
@@ -148,11 +167,14 @@ def ingresar_foto():
         print(f"Error: El archivo {foto} no existe.")
 
 def mostrar_menu():
-    print("\nMenú Pejedats")
+    amarillo = "\033[93m"  # Amarillo
+    reset_color = "\033[0m"  # Reset a color por defecto
+
+    print(f"{amarillo}\nMenú Pejedats")
     print("1. Archivos")
     print("2. Fotos")
     print("3. Eliminar metadatos")
-    print("4. Salir")
+    print("4. Salir{reset_color}")
     return input("Seleccione una opción (1-4): ")
 
 def main():
