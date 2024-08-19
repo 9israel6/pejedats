@@ -26,6 +26,7 @@ ______    ____      |__|  ____    __| _/_____   _/  |_   ______
 {reset_color}
 {purpura}Esta herramienta fue creada con fines educativos, cualquier mal uso de la misma es bajo tu responsabilidad - 9israel6{reset_color}
 {azul}https://www.facebook.com/9isra6{reset_color}
+{azul}https://www.instagram.com/9israel6{reset_color}
     """
     print(texto_intro)
 
@@ -148,10 +149,17 @@ def ingresar_foto():
                     hora = exif_data.get(36867, "No disponible")
                     dispositivo = exif_data.get(271, "No disponible")
 
-                    if 'GPSInfo' in exif_data:
-                        gps_info = exif_data['GPSInfo']
-                        latitud = gps_info.get(2, "No disponible")
-                        longitud = gps_info.get(4, "No disponible")
+                    # Mapeo de etiquetas GPS a valores humanos
+                    gps_info = {}
+                    for tag, value in img._getexif().items():
+                        tag_name = ExifTags.TAGS.get(tag, tag)
+                        if tag_name == "GPSInfo":
+                            for key in value.keys():
+                                gps_info[ExifTags.GPSTAGS.get(key, key)] = value[key]
+
+                    if gps_info:
+                        latitud = gps_info.get("GPSLatitude", "No disponible")
+                        longitud = gps_info.get("GPSLongitude", "No disponible")
                         ubicacion = f"Lat: {latitud}, Lon: {longitud}"
 
                     print(f"\nMetadatos de la imagen: {foto}")
@@ -183,15 +191,4 @@ def main():
         opcion = mostrar_menu()
         if opcion == '1':
             ingresar_archivos()
-        elif opcion == '2':
-            ingresar_foto()
-        elif opcion == '3':
-            eliminar_metadatos()
-        elif opcion == '4':
-            print("Saliendo del programa...")
-            break
-        else:
-            print("Opción no válida, intente de nuevo.")
-
-if __name__ == "__main__":
-    main()
+        elif opcion ==
