@@ -188,4 +188,10 @@ def main():
         elif opcion == '3':
             eliminar_metadatos()
         elif opcion == '4':
-            print("Sali
+            print("Saliendo del programa...")
+            break
+        else:
+            print("Opción no válida, intente de nuevo.")
+
+if __name__ == "__main__":
+    main()
