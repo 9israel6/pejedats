@@ -151,7 +151,7 @@ def ingresar_foto():
 
                     # Mapeo de etiquetas GPS a valores humanos
                     gps_info = {}
-                    for tag, value in img._getexif().items():
+                    for tag, value in exif_data.items():
                         tag_name = ExifTags.TAGS.get(tag, tag)
                         if tag_name == "GPSInfo":
                             for key in value.keys():
@@ -191,4 +191,14 @@ def main():
         opcion = mostrar_menu()
         if opcion == '1':
             ingresar_archivos()
-        elif opcion ==
+        elif opcion == '2':
+            ingresar_foto()
+        elif opcion == '3':
+            eliminar_metadatos()
+        elif opcion == '4':
+            print("Saliendo del programa...")
+            break
+        else:
+            print("Opción no válida, intente de nuevo.")
+
+if __
